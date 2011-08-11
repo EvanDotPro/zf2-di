@@ -24,8 +24,9 @@ $c['di']['instance']['john']['parameters']['lastName']  = 'Doe';
 
 // No alias or class for 'sister', so it should be a string (works)
 $c['di']['instance']['john']['methods']['addSibling']['relation'] = 'sister';
-// Alias for 'jane' should be evaluated to the 'jane' instance of Core\Mode\User.
-// This doesn't work; the string 'jane' is passed to this method.
+// Alias for 'jane' should be evaluated to the 'jane' instance of Core\Model\User.
+// This doesn't work; the string 'jane' is passed to this method. Setting this 
+// to Core\Model\User doesn't work either; as it still passes a string.
 $c['di']['instance']['john']['methods']['addSibling']['user'] = 'jane';
 
 
