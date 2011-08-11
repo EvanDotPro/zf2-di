@@ -59,4 +59,29 @@ class User
         $this->_lastName = $lastName;
         return $this;
     }
+
+    /**
+     * Add a Sibling 
+     * 
+     * @param string $relation 
+     * @param User $user 
+     */
+    public function addSibling($relation, $user)
+    {
+        $this->_siblings[] = array(
+            'relation'  => $relation,
+            'user'      => $user
+        );
+        return $this;
+    }
+
+    /**
+     * Get siblings 
+     * 
+     * @return array
+     */
+    public function getSiblings()
+    {
+        return $this->_siblings;
+    }
 }

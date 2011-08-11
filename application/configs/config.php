@@ -12,14 +12,21 @@ $c['bootstrap_class']                       = 'Bootstrap';
  * Zend\Di Config
  */
 
+// Jane
+$c['di']['instance']['alias']['jane']                   = 'Core\Model\User';
+$c['di']['instance']['jane']['parameters']['firstName'] = 'Jane';
+$c['di']['instance']['jane']['parameters']['lastName']  = 'Doe';
+
 // John
 $c['di']['instance']['alias']['john']                   = 'Core\Model\User';
 $c['di']['instance']['john']['parameters']['firstName'] = 'John';
 $c['di']['instance']['john']['parameters']['lastName']  = 'Doe';
 
-// Jane
-$c['di']['instance']['alias']['jane']                   = 'Core\Model\User';
-$c['di']['instance']['jane']['parameters']['firstName'] = 'Jane';
-$c['di']['instance']['jane']['parameters']['lastName']  = 'Doe';
+// No alias or class for 'sister', so it should be a string (works)
+$c['di']['instance']['john']['methods']['addSibling']['relation'] = 'sister';
+// Alias for 'jane' should be evaluated to the 'jane' instance of Core\Mode\User.
+// This doesn't work; the string 'jane' is passed to this method.
+$c['di']['instance']['john']['methods']['addSibling']['user'] = 'jane';
+
 
 return $c;
